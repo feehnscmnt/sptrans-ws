@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<configuration>
+	<properties>
+		<property name="folder">C:/Users/Temp/SPTransWS</property>
+		<property name="size">100MB</property>
+	</properties>
+	<appenders>
+		<console name="console" target="SYSTEM_OUT">
+			<patternLayout>
+				<pattern>%d{dd/MM/yyyy HH:mm:ss} %-10p - %-20logger{1} - %message%n</pattern>
+			</patternLayout>
+		</console>
+		<routing name="routing">
+			<routes pattern="$${ctx:ROUTINGKEY}">
+				<route key="$${ctx:ROUTINGKEY}">
+					<rollingFile name="Rolling-Default" fileName="${folder}/SPTransWS.log" filePattern="${folder}/SPTransWS-%i.log.zip">
+						<patternLayout>
+							<pattern>%d{dd/MM/yyyy HH:mm:ss} %-10p - %-10logger{1} - %message%n</pattern>
+						</patternLayout>
+						<policies>
+							<sizeBasedTriggeringPolicy size="${size}"/>
+						</policies>
+						<defaultRolloverStrategy max="10" fileIndex="min"/>
+					</rollingFile>
+				</route>
+				<route>
+					<rollingFile name="Rolling-${ctx:ROUTINGKEY}" fileName="${folder}/${ctx:ROUTINGKEY}/${ctx:ROUTINGKEY}.log" filePattern="${folder}/${ctx:ROUTINGKEY}/${ctx:ROUTINGKEY}-%i.log.zip">
+						<patternLayout>
+							<pattern>%d{dd/MM/yyyy HH:mm:ss} %-10p - %-10logger{1} - %message%n</pattern>
+						</patternLayout>
+						<policies>
+							<sizeBasedTriggeringPolicy size="${size}"/>
+						</policies>
+						<defaultRolloverStrategy max="10" fileIndex="min"/>
+					</rollingFile>
+				</route>
+			</routes>
+		</routing>
+		<routing name="errorRouting">
+			<routes pattern="$${ctx:ROUTINGKEY}">
+				<route key="$${ctx:ROUTINGKEY}">
+					<rollingFile name="Rolling-Error-Default" fileName="${folder}/SPTransWSErrorLog.log" filePattern="${folder}/SPTransWSError-%i.log.zip">
+						<patternLayout>
+							<pattern>%d{dd/MM/yyyy HH:mm:ss} %-10p - %-10logger{1} - %message%n</pattern>
+						</patternLayout>
+						<policies>
+							<sizeBasedTriggeringPolicy size="${size}"/>
+						</policies>
+						<defaultRolloverStrategy max="10" fileIndex="min"/>
+					</rollingFile>
+				</route>
+				<route>
+					<rollingFile name="Rolling-Error-${ctx:ROUTINGKEY}" fileName="${folder}/${ctx:ROUTINGKEY}/error-${ctx:ROUTINGKEY}.log" filePattern="${folder}/${ctx:ROUTINGKEY}/error-${ctx:ROUTINGKEY}-%i.log.zip">
+						<patternLayout>
+							<pattern>%d{dd/MM/yyyy HH:mm:ss} %-10p - %-10logger{1} - %message%n</pattern>
+						</patternLayout>
+						<policies>
+							<sizeBasedTriggeringPolicy size="${size}"/>
+						</policies>
+						<defaultRolloverStrategy max="10" fileIndex="min"/>
+					</rollingFile>
+				</route>
+			</routes>
+		</routing>
+	</appenders>
+	<loggers>
+		<root level="DEBUG">
+			<appenderRef ref="routing" level="info"/>
+			<appenderRef ref="errorRouting" level="error"/>
+			<appenderRef ref="console" level="debug"/>
+		</root>
+	</loggers>
+</configuration>
