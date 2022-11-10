@@ -4,12 +4,12 @@ import org.apache.logging.log4j.LogManager;
 import java.util.MissingResourceException;
 import org.apache.logging.log4j.Logger;
 import java.util.ResourceBundle;
-import java.io.Serializable;
 import java.text.MessageFormat;
+import java.io.Serializable;
 import java.util.Locale;
 
 /**
- * Classe respons·vel pela leitura do properties contendo as chaves (keys) com propriedades para consumo da API!
+ * Classe respons√°vel pela leitura do properties contendo as chaves (keys) com propriedades para consumo da API!
  * 
  * @author Felipe Nascimento
  */

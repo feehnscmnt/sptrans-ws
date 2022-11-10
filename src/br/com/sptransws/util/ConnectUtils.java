@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- * Classe respons·vel pela comunicaÁ„o com a API!
+ * Classe respons√°vel pela comunica√ß√£o com a API!
  * 
  * @author Felipe Nascimento
  *
@@ -39,7 +39,7 @@ public class ConnectUtils implements Serializable {
 		try {
 			con.setRequestMethod(method);
 		} catch(ProtocolException e) {
-			LOG.error("Houve erro no mÈtodo addMethod. Exception: {}", e.getMessage());
+			LOG.error("Houve erro no m√©todo addMethod. Exception: {}", e.getMessage());
 		}
 	}
 	
@@ -60,18 +60,18 @@ public class ConnectUtils implements Serializable {
 			con.connect();
 			
 			if (con.getResponseCode() != HttpURLConnection.HTTP_CREATED && con.getResponseCode() != HttpURLConnection.HTTP_OK) {
-				LOG.info("MÈtodo da requisiÁ„o: {}", con.getRequestMethod());				
+				LOG.info("M√©todo da requisi√ß√£o: {}", con.getRequestMethod());				
 				BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream()));				
 				String linha;
 				
 				while ((linha = br.readLine()) != null) {
-		        	LOG.info("Corpo da requisiÁ„o: {}", linha);
+		        	LOG.info("Corpo de erro da requisi√ß√£o: {}", linha);
 		        }
 			}
 			
 			is = con.getInputStream();
 		} catch(IOException e) {
-			LOG.error("Houve erro no mÈtodo execute. Exception: {}", e.getMessage());
+			LOG.error("Houve erro no m√©todo execute. Exception: {}", e.getMessage());
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class ConnectUtils implements Serializable {
 				output = br.readLine();
 			}
 		} catch(IOException e) {
-			LOG.error("Houve erro no mÈtodo getResultAsString. Exception: {}", e.getMessage());
+			LOG.error("Houve erro no m√©todo getResultAsString. Exception: {}", e.getMessage());
 		}
 		
 		return sb.toString();
@@ -97,7 +97,7 @@ public class ConnectUtils implements Serializable {
 			is.close();
 			con.disconnect();
 		} catch(IOException e) {
-			LOG.error("Houve erro no mÈtodo disconnect. Exception: {}", e.getMessage());
+			LOG.error("Houve erro no m√©todo disconnect. Exception: {}", e.getMessage());
 		}
 	}
 	

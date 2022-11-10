@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.JOptionPane;
 
 /**
- * Classe respons·vel pela inicializaÁ„o do WebService!
+ * Classe respons√°vel pela inicializa√ß√£o do WebService!
  * 
  * @author Felipe Nascimento
  * 
@@ -25,7 +25,7 @@ public class StartApp {
 		
 		switch (tipoConsulta) {
 			case "Selecione..":
-				JOptionPane.showMessageDialog(null, "OpÁ„o inv·lida. Execute o programa novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Op√ß√£o inv√°lida. Execute o programa novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
 				break;
 			case "Linha":
@@ -56,37 +56,37 @@ public class StartApp {
 				String responseEmpresa = apiCon.empresa();
 				LOG.info("Response Empresa >> {}", responseEmpresa);
 				break;
-			case "PosiÁ„o":
+			case "PosiÔøΩÔøΩo":
 				String responsePosicao = apiCon.posicao();
-				LOG.info("Response PosiÁ„o >> {}", responsePosicao);
+				LOG.info("Response Posi√ß√£o >> {}", responsePosicao);
 				break;
-			case "PosiÁ„o por Linha":
+			case "PosiÔøΩÔøΩo por Linha":
 				String responsePosicaoPorLinha = apiCon.posicaoPorLinha("2506");
-				LOG.info("Response PosiÁ„o Por Linha >> {}", responsePosicaoPorLinha);
+				LOG.info("Response Posi√ß√£o Por Linha >> {}", responsePosicaoPorLinha);
 				break;
-			case "PosiÁ„o Garagem":
+			case "PosiÔøΩÔøΩo Garagem":
 				String responsePosicaoGaragem = apiCon.posicaoGaragem("37", "35274");
-				LOG.info("Response PosiÁ„o Garagem >> {}", responsePosicaoGaragem);
+				LOG.info("Response Posi√ß√£o Garagem >> {}", responsePosicaoGaragem);
 				break;
-			case "Previs„o de Chegada":
+			case "PrevisÔøΩo de Chegada":
 				String responsePrevisaoChegada = apiCon.previsaoChegada("7014417", "2506");
-				LOG.info("Response Previs„o Chegada >> {}", responsePrevisaoChegada);
+				LOG.info("Response Previs√£o Chegada >> {}", responsePrevisaoChegada);
 				break;
-			case "Previs„o de Chegada por Linha":
+			case "PrevisÔøΩo de Chegada por Linha":
 				String responsePrevisaoChegadaPorLinha = apiCon.previsaoChegadaPorLinha("2506");
-				LOG.info("Response Previs„o Chegada Por Linha >> {}", responsePrevisaoChegadaPorLinha);
+				LOG.info("Response Previs√£o Chegada Por Linha >> {}", responsePrevisaoChegadaPorLinha);
 				break;
-			case "Previs„o de Chegada por Parada":
+			case "Previs√£o de Chegada por Parada":
 				String responsePrevisaoChegadaPorParada = apiCon.previsaoChegadaPorParada("4203724");
-				LOG.info("Response Previs„o Chegada Por Parada >> {}", responsePrevisaoChegadaPorParada);
+				LOG.info("Response Previs√£o Chegada Por Parada >> {}", responsePrevisaoChegadaPorParada);
 				break;
 			default: break;
 		}
 	}
 	
 	private static String[] tipos() {
-		return new String[] {"Selecione..", "Linha", "Linha Sentido", "Parada", "Parada por Linha", "Corredor", "Paradas por Corredor", "Empresa",
-				"PosiÁ„o", "PosiÁ„o por Linha", "PosiÁ„o Garagem", "Previs„o de Chegada", "Previs„o de Chegada por Linha", "Previs„o de Chegada por Parada" };
+		return new String[] { "Selecione..", "Linha", "Linha Sentido", "Parada", "Parada por Linha", "Corredor", "Paradas por Corredor", "Empresa",
+				"Posi√ß√£o", "Posi√ß√£o por Linha", "Posi√ß√£o Garagem", "Previs√£o de Chegada", "Previs√£o de Chegada por Linha", "Previs√£o de Chegada por Parada" };
 	}
 
 }

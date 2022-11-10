@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import br.com.sptransws.domain.Bundle;
 
 /**
- * Classe responsável pela chamada dos métodos de consumo da API!
+ * Classe responsÃ¡vel pela chamada dos mÃ©todos de consumo da API!
  * 
  * @author Felipe Nascimento
  *
@@ -17,15 +17,15 @@ public class ApiConnect {
 	private String apiCredentials;
 	
 	public void autenticar() {
-		LOG.info("Realizando autenticação...");
+		LOG.info("Realizando autenticaÃ§Ã£o...");
 		ConnectUtils con = new ConnectUtils(Bundle.getChavePropComParametro("ENDPOINT_AUTH", Bundle.getChaveProp("URL_API"), Bundle.getChaveProp("TOKEN_APP")));
 		con.addHeader(Bundle.getChaveProp("KEY_HEADER_CONTENT_LENGTH"), Bundle.getChaveProp("VALUE_HEADER_CONTENT_LENGTH"));
 		con.addMethod(Bundle.getChaveProp("METHOD_POST"));
 		con.execute();
-		LOG.info("Response Autenticação >> {}", con.getResultAsString());
+		LOG.info("Response AutenticaÃ§Ã£o >> {}", con.getResultAsString());
 		con.getConnection().getHeaderFields().get("Set-Cookie").forEach(cookie -> LOG.info("Cookie >> {}", cookie));
 		con.getConnection().getHeaderFields().get("Set-Cookie").forEach(cookie -> apiCredentials = cookie);
-		LOG.info("Autenticação realizada com sucesso!");
+		LOG.info("AutenticaÃ§Ã£o realizada com sucesso!");
 	}
 	
 	public String buscarLinha(String termo) {
